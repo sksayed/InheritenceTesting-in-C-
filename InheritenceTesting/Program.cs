@@ -13,10 +13,12 @@ namespace InheritenceTesting
             // The code provided will print ‘Hello World’ to the console.
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
             Console.WriteLine("Hello World!");
-            Console.ReadKey();
+
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app!
-            Rectangle r = new Rectangle();
+            Rectangle r = new Rectangle(8.0, 9.6);
+            C c = new C();
+            r.cost();
         }
     }
 
@@ -25,11 +27,12 @@ namespace InheritenceTesting
         protected double height;
         protected double width;
 
-        public Shape()
+        public Shape(double height, double width)
         {
-            this.height = 0;
-            this.width = 0;
+            this.height = height;
+            this.width = width;
             Console.WriteLine(" base shape constructor has been made ");
+            display();
 
         }
 
@@ -57,17 +60,58 @@ namespace InheritenceTesting
             return this.width * this.height;
         }
 
+        void display()
+        {
+            Console.WriteLine(" the height is " + this.height);
+            Console.WriteLine(" the weidth is " + this.width);
+        }
+
 
     }
 
     class Rectangle : Shape
     {
-        public Rectangle()
+        public Rectangle(double h, double w) : base(h, w)
         {
             Console.WriteLine(" inside the child rectangle class ");
+
+        }
+        
+       public  void cost ()
+        {
+            var x = height * width * 90;
+            Console.WriteLine(x);
         }
     }
 
-    
+    //this is the way where derived class has initailized the base constructor 
+
+
+    class A
+    {
+        public A()
+        {
+            Console.WriteLine(" this is class a constructor ");
+        }
+
+    }
+    class B : A
+    {
+        public B()
+        {
+            Console.WriteLine(" this is class B constructor ");
+        }
+    }
+
+    class C : B
+    {
+        public C()
+        {
+            Console.WriteLine(" this is class C constructor ");
+        }
+    }
+
+
+
 
 }
