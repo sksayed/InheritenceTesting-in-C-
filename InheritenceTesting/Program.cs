@@ -19,6 +19,11 @@ namespace InheritenceTesting
             Rectangle r = new Rectangle(8.0, 9.6);
             C c = new C();
             r.cost();
+            c.anotherRandomGeneric(15, 28.6);
+
+            Mygenerics<string> mygenerics = new Mygenerics<string>("sayed");
+           var s = mygenerics.GenericMethod("israt", 15);
+            Console.WriteLine(s);
         }
     }
 
@@ -109,6 +114,14 @@ namespace InheritenceTesting
         {
             Console.WriteLine(" this is class C constructor ");
         }
+
+        public void anotherRandomGeneric<T, U>(T x, U y)  
+            {
+                Console.WriteLine(" the the type of T is {0} and value is {1}", typeof(T).ToString() , x.ToString() );
+                Console.WriteLine(" the the type of T is {0} and value is {1}", typeof(U).ToString() , y.ToString() );
+
+            }
+
     }
 
 
